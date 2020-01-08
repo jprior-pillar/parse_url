@@ -8,10 +8,10 @@ def format_parsed_url(parsed_url):
     # q = urlparse(parsed_url)
 
     field_names = ('scheme', 'netloc', 'path', 'params', 'query', 'fragment')
-    output = []
-    for key, value in zip(field_names, parsed_url):
-        output.append(f'{key}:\t{value!r}\n')
-    return ''.join(output)
+    return ''.join(
+        f'{key}:\t{value!r}\n'
+        for key, value in zip(field_names, parsed_url)
+    )
 
 
 def format_query(query):
