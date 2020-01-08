@@ -30,7 +30,6 @@ def main(lines):
         print_lines(format_parsed_url(parsed_url))
         query = parsed_url.query
         print_lines(format_query(query))
-    pass
 
 
 if __name__ == '__main__':
