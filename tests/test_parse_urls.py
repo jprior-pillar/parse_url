@@ -4,12 +4,6 @@ import pytest
 
 from parse_url import format_parsed_url, format_query, main
 
-'''
-url = 'laksjdf' 
-parse_url
-return string and parse_object
-'''
-
 def test_format_parsed_url():
     url = (
         'https://foo.com/bar/digest'
