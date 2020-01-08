@@ -17,15 +17,15 @@ def test_format_parsed_url():
     )
     parsed_url = urlparse(url)
     expected = (
-        "scheme:\t'https'\n"
-        "netloc:\t'foo.com'\n"
-        "path:\t'/bar/digest'\n"
-        "params:\t''\n"
+        "scheme:\t'https'\n",
+        "netloc:\t'foo.com'\n",
+        "path:\t'/bar/digest'\n",
+        "params:\t''\n",
         "query:\t'lat=here&link=https%3A%2F%2Fbaz.com%2F"
-            "%23%2Fhear%2F%3Fr%3Djoe'\n"
-        "fragment:\t''\n"
+            "%23%2Fhear%2F%3Fr%3Djoe'\n",
+        "fragment:\t''\n",
     )
-    actual = format_parsed_url(parsed_url)
+    actual = tuple(format_parsed_url(parsed_url))
     assert expected == actual
 
 
