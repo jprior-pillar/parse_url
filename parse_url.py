@@ -5,8 +5,6 @@ from urllib.parse import urlparse, parse_qs
 
 
 def format_parsed_url(parsed_url):
-    # q = urlparse(parsed_url)
-
     field_names = ('scheme', 'netloc', 'path', 'params', 'query', 'fragment')
     for key, value in zip(field_names, parsed_url):
         yield f'{key}:\t{value!r}\n'
