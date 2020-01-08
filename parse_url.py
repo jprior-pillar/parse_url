@@ -6,16 +6,16 @@ from urllib.parse import urlparse, parse_qs
 
 def format_parsed_url(parsed_url):
     field_names = ('scheme', 'netloc', 'path', 'params', 'query', 'fragment')
-    for key, value in zip(field_names, parsed_url):
-        yield f'{key}:\t{value!r}\n'
+    for field_name, value in zip(field_names, parsed_url):
+        yield f'{field_name}:\t{value!r}\n'
 
 
 def format_query(query):
-    for key, values in parse_qs(query).items():
+    for field_name, values in parse_qs(query).items():
         formatted_values = ', '.join(
             repr(value) for value in values
         )
-        yield f'{key}:\t{formatted_values}\n'
+        yield f'{field_name}:\t{formatted_values}\n'
     
 
 def print_lines(lines):
@@ -23,9 +23,9 @@ def print_lines(lines):
         print(line, end='')
 
 
-def main(lines):
-    for line in lines:
-        url = line.strip()
+def main(padded_urls):
+    for padded_url in padded_urls:
+        url = padded_url.strip()
         print(f'url:\t{url!r}')
         parsed_url = urlparse(url)
         print_lines(format_parsed_url(parsed_url))
