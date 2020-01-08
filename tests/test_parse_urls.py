@@ -24,11 +24,15 @@ def test_format_parsed_url():
 
 
 def test_format_query():
-    query = 'lat=here&link=https%3A%2F%2Fbaz.com%2F%23%2Fhear%2F%3Fr%3Djoe'
+    query = '&'.join((
+        'lat=here',
+        'lat=there',
+        'link=https%3A%2F%2Fbaz.com%2F%23%2Fhear%2F%3Fr%3Djoe',
+    ))
 
     expected = (
-        "lat:\t['here']\n",
-        "link:\t['https://baz.com/#/hear/?r=joe']\n",
+        "lat:\t'here', 'there'\n",
+        "link:\t'https://baz.com/#/hear/?r=joe'\n",
     )
     actual = tuple(format_query(query))
     assert expected == actual
@@ -55,8 +59,8 @@ def test_main(capsys):
             "%23%2Fhear%2F%3Fr%3Djoe'\n"
         "fragment:\t''\n"
 
-        "lat:\t['here']\n"
-        "link:\t['https://baz.com/#/hear/?r=joe']\n"
+        "lat:\t'here'\n"
+        "link:\t'https://baz.com/#/hear/?r=joe'\n"
     )
     main(input_lines)
     captured = capsys.readouterr()

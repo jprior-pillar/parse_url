@@ -16,6 +16,6 @@ For example:
     params: ''
     query:  'site=1&link=https%3a%2f%2fhello.com%2fworld%23%2f92387499-2034-9827-8972-043257012987'
     fragment:       ''
-    site:   ['1']
-    link:   ['https://hello.com/world#/92387499-2034-9827-8972-043257012987']
+    site:   '1'
+    link:   'https://hello.com/world#/92387499-2034-9827-8972-043257012987'
     you@here:~$

@@ -11,8 +11,11 @@ def format_parsed_url(parsed_url):
 
 
 def format_query(query):
-    for key, value in parse_qs(query).items():
-        yield f'{key}:\t{value!r}\n'
+    for key, values in parse_qs(query).items():
+        formatted_values = ', '.join(
+            repr(value) for value in values
+        )
+        yield f'{key}:\t{formatted_values}\n'
     
 
 def print_lines(lines):
