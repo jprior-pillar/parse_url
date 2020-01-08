@@ -33,10 +33,10 @@ def test_format_query():
     query = 'lat=here&link=https%3A%2F%2Fbaz.com%2F%23%2Fhear%2F%3Fr%3Djoe'
 
     expected = (
-        "lat:\t['here']\n"
-        "link:\t['https://baz.com/#/hear/?r=joe']\n"
+        "lat:\t['here']\n",
+        "link:\t['https://baz.com/#/hear/?r=joe']\n",
     )
-    actual = format_query(query)
+    actual = tuple(format_query(query))
     assert expected == actual
     
 

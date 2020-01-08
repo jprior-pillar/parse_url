@@ -13,10 +13,8 @@ def format_parsed_url(parsed_url):
 
 
 def format_query(query):
-    output = []
     for key, value in parse_qs(query).items():
-        output.append(f'{key}:\t{value!r}\n')
-    return ''.join(output)
+        yield f'{key}:\t{value!r}\n'
     
 
 def print_lines(lines):
@@ -31,7 +29,7 @@ def main(lines):
         parsed_url = urlparse(url)
         print_lines(format_parsed_url(parsed_url))
         query = parsed_url.query
-        print(format_query(query), end='')
+        print_lines(format_query(query))
     pass
 
 
