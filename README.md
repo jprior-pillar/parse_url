@@ -5,6 +5,7 @@ parse_url.py shows information parsed from URLs.
 It is a command line filter.
 URLs are input, one per line on standard input.
 The information is output on standard output.
+base64 decoded query values are shown if query values can be base64 decoded.
 
 For example:
 

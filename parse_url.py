@@ -2,6 +2,8 @@
 
 import sys
 from urllib.parse import urlparse, parse_qs
+from base64 import b64decode
+import binascii
 
 
 def format_parsed_url(parsed_url):
@@ -10,10 +12,21 @@ def format_parsed_url(parsed_url):
         yield f'{field_name}:\t{value!r}\n'
 
 
+def format_query_value(value):
+    s = repr(value)
+    try:
+        d = b64decode(value)
+    except binascii.Error:
+        pass
+    else:
+        s += f' ({d!r})'
+    return s
+
+
 def format_query(query):
     for field_name, values in parse_qs(query).items():
         formatted_values = ', '.join(
-            repr(value) for value in values
+            format_query_value(value) for value in values
         )
         yield f'{field_name}:\t{formatted_values}\n'
     

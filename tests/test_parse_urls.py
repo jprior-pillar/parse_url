@@ -28,11 +28,17 @@ def test_format_query():
         'lat=here',
         'lat=there',
         'link=https%3A%2F%2Fbaz.com%2F%23%2Fhear%2F%3Fr%3Djoe',
+        'email=amltLnByaW9yQGFjY2VudHVyZS5jb20=',
     ))
 
     expected = (
-        "lat:\t'here', 'there'\n",
-        "link:\t'https://baz.com/#/hear/?r=joe'\n",
+        "lat:\t'here' " r"(b'\x85\xea\xde'), "
+            "'there'\n",
+        "link:\t'https://baz.com/#/hear/?r=joe' "
+            r"(b'\x86\xdbi\xb3\xff\xdbk7(\x9b\xff\xe1y\xaa\xff\xae:\x1e')"
+            "\n",
+        "email:\t'amltLnByaW9yQGFjY2VudHVyZS5jb20=' "
+            "(b'jim.prior@accenture.com')\n",
     )
     actual = tuple(format_query(query))
     assert expected == actual
@@ -59,8 +65,12 @@ def test_main(capsys):
             "%23%2Fhear%2F%3Fr%3Djoe'\n"
         "fragment:\t''\n"
 
-        "lat:\t'here'\n"
-        "link:\t'https://baz.com/#/hear/?r=joe'\n"
+        "lat:\t'here' "
+            r"(b'\x85\xea\xde')"
+            "\n"
+        "link:\t'https://baz.com/#/hear/?r=joe' "
+            r"(b'\x86\xdbi\xb3\xff\xdbk7(\x9b\xff\xe1y\xaa\xff\xae:\x1e')"
+            "\n"
     )
     main(input_lines)
     captured = capsys.readouterr()
