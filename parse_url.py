@@ -26,7 +26,7 @@ def format_query_value(value):
 def format_query(query):
     for field_name, values in parse_qs(query).items():
         formatted_values = ', '.join(
-            format_query_value(value) for value in values
+            map(format_query_value, values)
         )
         yield f'{field_name}:\t{formatted_values}\n'
     
