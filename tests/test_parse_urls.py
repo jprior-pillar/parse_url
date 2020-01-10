@@ -52,19 +52,17 @@ def test_main(capsys):
         ),
     )
     expected = (
-        'url:\t' 
-        "'https://foo.com/bar/digest"
-        "?lat=here&link=https%3A%2F%2Fbaz.com%2F%23%2Fhear%2F%3Fr%3Djoe'"
-        '\n'
-
+        "url:\t"
+            "'https://foo.com/bar/digest"
+            "?lat=here&link=https%3A%2F%2Fbaz.com%2F%23%2Fhear%2F%3Fr%3Djoe'"
+            "\n"
         "scheme:\t'https'\n"
         "netloc:\t'foo.com'\n"
         "path:\t'/bar/digest'\n"
         "params:\t''\n"
-        "query:\t'lat=here&link=https%3A%2F%2Fbaz.com%2F"
-            "%23%2Fhear%2F%3Fr%3Djoe'\n"
+        "query:\t'lat=here&"
+            "link=https%3A%2F%2Fbaz.com%2F%23%2Fhear%2F%3Fr%3Djoe'\n"
         "fragment:\t''\n"
-
         "lat:\t'here' "
             r"(b'\x85\xea\xde')"
             "\n"
