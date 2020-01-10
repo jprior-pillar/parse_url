@@ -74,3 +74,31 @@ def test_main(capsys):
     captured = capsys.readouterr()
     actual = captured.out
     assert expected == actual
+
+
+def test_main_two_urls(capsys):
+    input_lines = (
+        'https://foo.com/\n',
+        'https://bar.com/\n',
+    )
+    expected = (
+        "url:\t'https://foo.com/'\n"
+        "scheme:\t'https'\n"
+        "netloc:\t'foo.com'\n"
+        "path:\t'/'\n"
+        "params:\t''\n"
+        "query:\t''\n"
+        "fragment:\t''\n"
+        "\n"
+        "url:\t'https://bar.com/'\n"
+        "scheme:\t'https'\n"
+        "netloc:\t'bar.com'\n"
+        "path:\t'/'\n"
+        "params:\t''\n"
+        "query:\t''\n"
+        "fragment:\t''\n"
+    )
+    main(input_lines)
+    captured = capsys.readouterr()
+    actual = captured.out
+    assert expected == actual

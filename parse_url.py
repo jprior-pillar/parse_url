@@ -37,7 +37,9 @@ def print_lines(lines):
 
 
 def main(padded_urls):
-    for padded_url in padded_urls:
+    for i, padded_url in enumerate(padded_urls):
+        if i > 0:
+            print()
         url = padded_url.strip()
         print(f'url:\t{url!r}')
         parsed_url = urlparse(url)
