@@ -42,7 +42,7 @@ def test_format_query():
     )
     actual = tuple(format_query(query))
     assert expected == actual
-    
+
 
 def test_main(capsys):
     input_lines = (

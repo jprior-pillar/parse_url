@@ -29,7 +29,7 @@ def format_query(query):
             map(format_query_value, values)
         )
         yield f'{field_name}:\t{formatted_values}\n'
-    
+
 
 def print_lines(lines):
     for line in lines:
