@@ -46,6 +46,7 @@ def test_format_query():
 
 test_data = (
     (
+        ['parse_url.py'],
         ( # input_lines
             (
                 'https://foo.com/bar/digest'
@@ -73,6 +74,7 @@ test_data = (
         ),
     ),
     (
+        ['parse_url.py'],
         ( # input_lines
             'https://foo.com/\n',
             'https://bar.com/\n',
@@ -95,10 +97,25 @@ test_data = (
             "fragment:\t''\n"
         ),
     ),
+    (
+        ['parse_url.py', 'https://foo.com/'],
+        ( # input_lines
+            'https://bar.com/\n',
+        ),
+        ( # expected
+            "url:\t'https://foo.com/'\n"
+            "scheme:\t'https'\n"
+            "netloc:\t'foo.com'\n"
+            "path:\t'/'\n"
+            "params:\t''\n"
+            "query:\t''\n"
+            "fragment:\t''\n"
+        ),
+    ),
 )
-@pytest.mark.parametrize('input_lines, expected', test_data)
-def test_main(input_lines, expected, capsys):
-    main(input_lines)
+@pytest.mark.parametrize('command_line_arguments, input_lines, expected', test_data)
+def test_main(command_line_arguments, input_lines, expected, capsys):
+    main(command_line_arguments[1:] or input_lines)
     captured = capsys.readouterr()
     actual = captured.out
     assert expected == actual

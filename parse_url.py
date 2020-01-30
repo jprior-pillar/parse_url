@@ -49,4 +49,4 @@ def main(padded_urls):
 
 
 if __name__ == '__main__':
-    main(sys.stdin)
+    main(sys.argv[1:] or sys.stdin)
